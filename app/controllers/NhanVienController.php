@@ -56,6 +56,12 @@ class NhanVienController
             $ma_phong  = $_POST['Ma_Phong'];
             $luong     = $_POST['Luong'];
 
+            $query = $this->nhanVienModel->getNhanVienById($ma_nv);
+            if ($query) {
+                echo "Mã nhân viên đã tồn tại.";
+                return;
+            }
+
             $result = $this->nhanVienModel->addNhanVien($ma_nv, $ten_nv, $phai, $noi_sinh, $ma_phong, $luong);
 
             if ($result) {
